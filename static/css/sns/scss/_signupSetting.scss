@@ -1,0 +1,86 @@
+@use "_variables.scss" as *;
+
+.wrapper {
+    position: relative;
+    margin: 0 auto;
+    align-items: center;
+    text-align: center;
+
+    h2 {
+        margin-top: 25px;
+        font-size: 3em;
+    }
+
+    .Area {
+        margin-top: 25px;
+
+        .textArea {
+            margin-top: 15px;
+
+            label {
+                display: block;
+                font-size: 2em;
+                margin-bottom: 15px;
+            }
+
+            .textbox {
+                border: solid 1px black;
+                width: 80vw;
+                height: 25px;
+                font-size: 1.5em;
+                font-family: none;
+            }
+
+        }
+
+        .box {
+            margin-top: 25px;
+            margin-bottom: 25px;
+
+            input {
+                font-size: 2em;
+                background-color: $bgColor;
+                padding: 5px 20px;
+            }
+        }
+    }
+}
+
+.signupCheck {
+    text-align: center;
+    h2 {
+        margin-top: 75px;
+        font-size: 3em;
+    }
+
+    h3 {
+        margin-top: 75px;
+        margin-bottom: 25px;
+        font-size: 1.5em;
+    }
+
+    .itemName {
+        margin-top: 10px;
+        font-size: 1.2em;
+    }
+
+    .item {
+        font-size: 2em;
+    }
+
+    .btnArea {
+        display: flex;
+        margin-top: 50px;
+        margin-bottom: 50px;
+
+        form {
+            width: 50vw;
+
+            input {
+                width: 50%;
+                padding: 10px 15px;
+                background-color: $bgColor;
+            }
+        }
+    }
+}

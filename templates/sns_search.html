@@ -1,0 +1,105 @@
+{% extends 'sns_base.html' %}
+
+{% block title %}search{% endblock %}
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="/static/css/sns/searchStyle.css">
+{% endblock %}
+{% block main %}
+
+<main>
+    <form action="/search" class="searchArea" method="get">
+        <input type="text" name="search" class="searchText">
+        <div class="searchButton">
+            <input type="image" src="/static/images/material/search.png" class="searchImg">
+        </div>
+    </form>
+    <div id="userArea">
+
+        {% if resultUser == [] %}
+        <p class="err">アカウント検索結果0件</p>
+        {% else %}
+        {% for rec in resultUser %}
+        <div class="user">
+            <p class="icon"><img src="/static/images/icon/{{rec['profile_image']}}" alt=""></p>
+            <p class="id">{{rec['id']}}</p>
+        </div>
+        {% endfor %}
+
+        {% endif %}
+
+    </div>
+    <div id="postArea">
+        {% if resultPost == [] %}
+        <p class="err">投稿検索結果0件</p>
+        <div class="bg"><img src="/static/images/material/asiat1.png" alt=""></div>
+
+        {% else %}
+        {% for rec in resultPost %}
+        <div class="post">
+            <div class="imageArea">
+                <a href="#" class="user">
+                    <form action="/post_user_detail/{{rec['id']}}" method="post">
+                        <p class="user_icon"><img src="/static/images/icon/{{rec['profile_image']}}" alt=""></p>
+                        <p class="user_id">{{rec['id']}}</p>
+                        <button type="submit"></button>
+                    </form>
+                </a>
+                <form action="/post_detail/{{rec['post_id']}}" method="post">
+                    <input type="image" value="投稿" src="/static/images/post/{{rec['image']}}">
+                </form>
+            </div>
+            <div class="detailUp">
+                <ul class="detailUpLeft">
+                    <li><a href="#"><img src="/static/images/material/heart.png" alt=""></a></li>
+                    <li><a href="#"><img src="/static/images/material/share.png" alt=""></a></li>
+                </ul>
+                <div class="detailUpRight">
+                    <p>獲得ポイント<span>{{rec["post_point"]}}</span>NP</p>
+                    <form action="/donation/{{rec['post_id']}}/1" method="post">
+                        <input type="image" value="寄付" src="/static/images/material/donation.png">
+                    </form>
+                </div>
+            </div>
+            <div class="cat_tag">
+                <p>{{rec["tag_name"]}}</p>
+            </div>
+            <div class="detail_area">
+                <div class="detail">
+                    <p class="detail_text">{{ rec["detail"] }}</p>
+                </div>
+                <div class="comment_area">
+                    <a class="js-modal-open" href="" data-target="{{rec['post_id']}}">
+                        <p class="title">コメント</p>
+                        <p class="comment">{{ rec["comment"] }}</p>
+                    </a>
+                </div>
+            </div>
+            <div id="{{rec['post_id']}}" class="modal js-modal">
+                <div class="modal__bg js-modal-close"></div>
+                <div class="modal__content">
+                    <div class="title_area">
+                        <p>コメント</p>
+                        <a class="js-modal-close" href="">閉じる</a>
+                    </div>
+                    <div class="modal_comment">
+                        <p>ここにコメント表示</p>
+                    </div>
+                    <form action="/comment/{{rec['post_id']}}">
+                        <input type="text" name="comment">
+                        <input type="submit" value="追加">
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</main>
+
+{% endblock %}
+{% block js %}
+{{ super() }}
+<script src="/static/js/menu.js"></script>
+{% endblock %}

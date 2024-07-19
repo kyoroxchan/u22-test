@@ -1,0 +1,60 @@
+{% extends 'sns_base.html' %}
+
+{% block title %}myprofile{% endblock %}
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="/static/css/sns/myprofileStyle.css">
+{% endblock %}
+{% block main %}
+
+<main>
+    {% for rec in result %}
+    <div id="user">
+        <div id="user-top">
+            <div id="icon">
+                <p><img src="/static/images/icon/{{post_icon}}" alt=""></p>
+            </div>
+            <div id="data">
+                <div>
+                    <h2>{{rec['name']}}</h2>
+                    <h3>ID:{{rec['id']}}</h3>
+                </div>
+                <p>総獲得ポイント<span>{{pointAll}}</span></p>
+            </div>
+        </div>
+        <div id="user-bottom">
+            <p id="detail">{{rec["profile_detail"]}}</p>
+            <ul id="followArea">
+                <li><a href="#">フォロー</a></li>
+                <li><a href="#">フォロワー</a></li>
+            </ul>
+        </div>
+    </div>
+    {% endfor %}
+
+    <ul class="tag_Area filter-list">
+        <li data-filter="all" class="tag"><span>すべて</span></li>
+        {% for tag in tag_tbl %}
+        <li data-filter="{{tag}}" class="tag"><span>{{ tag }}</span></li>
+        {% endfor %}
+    </ul>
+    <div id="postArea" class="filter-item">
+        {% for pDate in post_date %}
+        <div class="post" data-item="all {{pDate['tag_name']}}">
+            <form action="/post_detail/{{pDate['post_id']}}" method="post">
+                <input type="image" value="投稿" src="/static/images/post/{{pDate['image']}}">
+            </form>
+        </div>
+
+        {% endfor %}
+    </div>
+
+</main>
+
+{% endblock %}
+{% block js %}
+{{ super() }}
+<script src="/static/js/menu.js"></script>
+<script src="/static/js/myprofile.js"></script>
+
+{% endblock %}

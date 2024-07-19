@@ -1,0 +1,51 @@
+@use "_variables.scss" as *;
+
+.wrapper {
+    position: relative;
+    margin: 0 auto;
+    align-items: center;
+    text-align: center;
+
+    h2 {
+        margin-top: 10vh;
+        font-size: 3em;
+    }
+
+    .Area {
+        margin-top: 25px;
+
+        .textArea {
+            margin-top: 25px;
+
+            label {
+                display: block;
+                font-size: 2em;
+                margin-bottom: 15px;
+            }
+
+            .textbox {
+                border: solid 1px black;
+                width: 80vw;
+                height: 30px;
+                font-size: 1.5em;
+                color: black;
+                font-family: none;
+            }
+
+        }
+
+        .box {
+            margin-top: 25px;
+
+            input {
+                font-size: 2em;
+                background-color: $bgColor;
+                padding: 5px 10px;
+            }
+        }
+
+        .down {
+            margin-top: 10px;
+        }
+    }
+}

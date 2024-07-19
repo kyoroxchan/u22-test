@@ -1,0 +1,77 @@
+{% extends 'sns_base.html' %}
+
+{% block title %}home{% endblock %}
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/css/modaal.min.css">
+<link rel="stylesheet" href="/static/css/sns/donationStyle.css">
+{% endblock %}
+{% block main %}
+
+<main>
+    {% if toggle == 1 %}
+    <form action="/" id="backBtn">
+        <input type="submit" value="&lt;もどる">
+    </form>
+    {% for rec in result %}
+    <h1><span>{{rec['id']}}</span>さんに<br>寄付するポイント量を選択してください</h1>
+    <div id="post">
+        <p class="post_img"><img src="/static/images/post/{{rec['image']}}" alt=""></p>
+        <p class="detail">{{rec["detail"]}}</p>
+    </div>
+    <div id="selectPoint">
+        <h2>所有ポイント<span><img src="/static/images/material/point.png" alt="">{{point}}NP</span></h2>
+        <form action="/donation/{{post_id}}/2" method="post" id="selectForm">
+            <div id="selectArea">
+                <div class="addSelect">
+                    <input type="radio" name="addPoint" value="100" id="100">
+                    <label for="100">100</label>
+                </div>
+                <div class="addSelect">
+                    <input type="radio" name="addPoint" value="500" id="500" checked>
+                    <label for="500">500</label>
+                </div>
+                <div class="addSelect">
+                    <input type="radio" name="addPoint" value="1000" id="1000">
+                    <label for="1000">1000</label>
+                </div>
+                <div class="addSelect">
+                    <input type="radio" name="addPoint" value="3000" id="3000">
+                    <label for="3000">3000</label>
+                </div>
+                <div class="addSelect">
+                    <input type="radio" name="addPoint" value="5000" id="5000">
+                    <label for="5000">5000</label>
+                </div>
+                <div class="addSelect">
+                    <input type="radio" name="addPoint" value="10000" id="10000">
+                    <label for="10000">10000</label>
+                </div>
+            </div>
+        </form>
+
+        <p id="checkBtn"><a href="#info" class="modal-open">寄付する</a></p>
+        <section id="info">
+            <h2>所有ポイント<span><img src="/static/images/material/point.png" alt="">{{point}}</span></h2>
+            <form action="/donation/{{post_id}}/2" method="post">
+                <div id="resultArea">
+                    <input type="hidden" value="500" name="resultPoint" id="hiddenText">
+                    <p id="resultPoint">500</p>
+                    <p id="resultText">ポイント寄付します</p>
+                </div>
+                <input type="submit" value="寄付します" id="donationBtn">
+            </form>
+        </section>
+    </div>
+    {% endfor %}
+    {% elif toggle == 2 %}
+    {% endif %}
+</main>
+
+{% endblock %}
+{% block js %}
+{{ super() }}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+<script src="/static/js/donation.js"></script>
+{% endblock %}

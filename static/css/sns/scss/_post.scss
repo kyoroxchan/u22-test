@@ -1,0 +1,179 @@
+@use "_variables.scss" as *;
+
+h1 {
+    font-size: 10vw;
+    text-align: center;
+    padding-top: 10px;
+}
+
+h2 {
+    font-size: 8vw;
+    text-align: center;
+    padding: 10px 0;
+    color: white;
+    background-color: $labelColor;
+}
+
+.cat {
+    width: 80vw;
+    margin: 0 auto;
+    text-align: center;
+
+    li {
+        font-size: 20px;
+    }
+}
+
+.post {
+    width: 100vw;
+    // margin-bottom: 1vh;
+    padding-top: 10px;
+    position: relative;
+
+    .img_label {
+        display: flex;
+        width: 90vw;
+        color: #ffffff;
+        background-color: $labelColor;
+        cursor: pointer;
+        margin: 0 auto;
+        font-size: 2rem;
+
+        .file {
+            display: none;
+        }
+    }
+
+    .photo_Area {
+        height: auto;
+        width: 90vw;
+        margin: 0 auto;
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+        background-color: $bgSubColor;
+
+        #iconPreview {
+            width: 80vw;
+            position: absolute;
+            z-index: -1;
+            margin-left: 5vw;
+        }
+
+        #preview {
+            width: 90vw;
+            height: auto;
+            z-index: 10;
+        }
+    }
+
+    .tag_Area {
+        height: 50px;
+        width: 90vw;
+        margin: 10px auto;
+        padding: 5px;
+        position: relative;
+        background-color: $labelColor;
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+
+        .tag_name {
+
+            label {
+                display: inline-block;
+                height: 40px;
+                width: auto;
+                line-height: 40px;
+                background-color: aliceblue;
+                margin-left: 10px;
+                padding: 0 10px;
+                border-radius: 30px;
+                text-align: center;
+                color: black;
+                font-size: 1rem;
+            }
+
+            input:checked+label {
+                background: $bgColor;
+                font-weight: 500;
+                color: #fff;
+                text-shadow: 0 0 2px black;
+                box-shadow: inset 0 0 15px white;
+            }
+
+        }
+
+    }
+
+    .name_Area {
+        width: 90vw;
+        background-color: $bgSubColor;
+        margin: 0 auto;
+        position: relative;
+
+        .name_title {
+            width: 90vw;
+            height: 20px;
+            font-size: 1.2rem;
+            color: #fff;
+            background-color: $labelColor;
+
+        }
+
+        .name {
+            width: 90vw;
+            height: 30px;
+            font-size: 20px;
+            margin: 0;
+            padding: 0;
+            border: 1px solid black;
+        }
+    }
+
+    .detail_Area {
+        height: 75px;
+        width: 90vw;
+        background-color: $bgSubColor;
+        border: 1px solid black;
+        margin: 0 auto;
+        position: relative;
+
+        .detail_title {
+            width: 90vw;
+            height: 25px;
+            font-size: 1.2rem;
+            background-color: $labelColor;
+            color: #fff;
+
+        }
+
+        .detail {
+            width: 90vw;
+            height: 50px;
+            margin: 0;
+            padding: 5px;
+            overflow-y: scroll;
+
+        }
+    }
+
+    .post_Area {
+        height: 50px;
+        width: 90vw;
+        background-color: $bgColor;
+        margin: 20px auto;
+        margin-top: 20px;
+        position: relative;
+        border-radius: 10px;
+
+        .post_value {
+            height: 50px;
+            width: 90vw;
+            text-align: center;
+            border-radius: 10px;
+        }
+    }
+}

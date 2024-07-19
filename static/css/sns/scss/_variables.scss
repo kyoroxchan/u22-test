@@ -1,0 +1,30 @@
+@font-face {
+    /* ① ここにfont-familyで指定したい名前を書く*/
+    font-family: "myfont";
+
+    /* フォントが置かれているパスを書く */
+    src: url("/static/font/azuki.ttf") format("truetype")
+}
+
+body {
+    font-family: "myfont";
+    font-weight: bold;
+}
+
+$bgColor: rgba(177, 175, 199, 1);
+$bgSubColor: #fff;
+$labelColor: rgba(177, 175, 199, 1);
+
+
+$inputColor: blanchedalmond;
+$titleColor: white;
+
+
+// $bgColor: #A4BFB0;
+// $bgSubColor: #F2F2F2;
+// $labelColor: #A4BFB0;
+
+
+// $bgColor: #1D1843;
+// $bgSubColor: #fff;
+// $labelColor: #1D1843;

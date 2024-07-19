@@ -1,0 +1,44 @@
+{% extends 'sns_base.html' %}
+
+{% block title %}post{% endblock %}
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="/static/css/sns/postStyle.css">
+{% endblock %}
+{% block main %}
+
+<main>
+    <h1>新規投稿</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data" id="selectForm">
+        <div class="post">
+            <label class="img_label">
+                <input type="file" name="file" class="file" onchange="previewImage(this);">写真を選択する
+            </label>
+            <div class="photo_Area">
+                <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+            </div>
+            <div class="tag_Area">
+                <div class="tag_name">
+                    {% for tag in tag_tbl %}
+                    <input type="radio" name="tag_name" value="{{ tag }}" id="{{ tag }}">
+                    <label for="{{ tag }}">{{ tag }}</label>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="detail_Area">
+                <p class="detail_title">詳細</p>
+                <textarea class="detail" name="detail" cols="10" rows="10" maxlength="200"></textarea>
+            </div>
+            <div class="post_Area">
+                <input type="submit" value="送信" class="post_value">
+            </div>
+        </div>
+    </form>
+</main>
+
+{% endblock %}
+{% block js %}
+{{ super() }}
+<script src="/static/js/menu.js"></script>
+<script src="/static/js/post.js"></script>
+{% endblock %}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    {% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}test{% endblock %}</title>
+    {% endblock %}
+</head>
+
+<body>
+
+    <header>
+        <div id="logoArea">
+            <form action="/">
+                <input type="image" src="/static/images/material/logo.png">
+            </form>
+            <p><img src="/static/images/material/logo2.png" alt=""></p>
+        </div>
+        <div id="navArea">
+            <form action="/point" id="point">
+                <p class="np_img"><img src="/static/images/material/point.png" alt=""></p>
+                {% if "userId" in session %}
+                <p class="np">{{point}} NP</p>
+                {% else %}
+                <p class="np">ないよ</p>
+                {% endif %}
+                <button type="submit"></button>
+                {% if pointAdd == "on" %}
+                <div id="pointPop" class="p-none">
+                    <p>追加しました</p>
+                </div>
+                {% else %}
+                <div id="pointPop" class="p-none none"></div>
+                {% endif%}
+            </form>
+            <div class="openbtn"><span></span><span></span><span></span></div>
+            <nav id="g-nav">
+                <div id="g-nav-list">
+                    <ul>
+                        {% if "userId" in session %}
+                        <li>
+                            <form action="/profile">
+                                <input type="submit" value="プロフィール">
+                            </form>
+                        </li>
+                        <li>
+                            <form action="/catTagAdd">
+                                <input type="submit" value="自分のねこ">
+                            </form>
+                        </li>
+                        <li>
+                            <form action="/signout">
+                                <input type="submit" value="ログアウト">
+                            </form>
+                        </li>
+                        {% else %}
+                        <li>
+                            <form action="/user">
+                                <input type="submit" value="ログイン">
+                            </form>
+                        </li>
+                        {% endif %}
+
+                        <li>
+                            <form action="/">
+                                <input type="submit" value="SNS">
+                            </form>
+                        </li>
+                        <li>
+                            <form action="/">
+                                <input type="submit" value="お知らせ">
+                            </form>
+                        </li>
+                        <li>
+                            <form action="/">
+                                <input type="submit" value="よくある質問">
+                            </form>
+                        </li>
+                        <li>
+                            <form action="/">
+                                <input type="submit" value="お問い合わせ">
+                            </form>
+                        </li>
+                        <li>
+                            <form action="/">
+                                <input type="submit" value="運営会社">
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+                <div class="list_bg"><img src="/static/images/material/cat4.png" alt=""></div>
+            </nav>
+        </div>
+    </header>
+    {% block main %}
+    {% endblock %}
+    <footer>
+        <ul>
+            <li>
+                <form action="/">
+                    <input type="image" src="/static/images/material/home.png">
+                </form>
+            </li>
+            <li>
+                <form action="/searchArea">
+                    <input type="image" src="/static/images/material/search.png">
+                </form>
+            </li>
+            <li>
+                <form action="/post">
+                    <input type="image" src="/static/images/material/post.png">
+                </form>
+            </li>
+
+            <li>
+                <form action="/">
+                    <input type="image" src="/static/images/material/camera.png">
+                </form>
+            </li>
+            {% if "userId" in session %}
+
+            <li>
+                <form action="/user">
+                    <input type="image" src="/static/images/icon/{{icon}}">
+                </form>
+            </li>
+            {% else %}
+            <li>
+                <form action="/user">
+                    <input type="image" src="/static/images/icon/unknownUser.jpg">
+                </form>
+            </li>
+            {% endif %}
+        </ul>
+    </footer>
+    {% block js %}
+    <script src="/static/js/jquery-3.6.0.min.js"></script>
+    <script src="/static/js/menu.js"></script>
+    <script src="/static/js/modal.js"></script>
+    {% endblock %}
+</body>
+
+</html>

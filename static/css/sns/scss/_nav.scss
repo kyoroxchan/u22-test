@@ -1,0 +1,347 @@
+@use "_variables.scss" as *;
+
+main {
+    height: 100vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: $bgSubColor;
+    padding-top: 75px;
+    padding-bottom: 75px;
+}
+
+#pc-none {
+    display: none;
+}
+
+header {
+    width: 100vw;
+    height: 75px;
+    background-color: $bgColor;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+
+    #logoArea {
+        width: 60vw;
+        display: flex;
+
+        input {
+            background-color: $bgSubColor;
+            height: 55px;
+            width: 55px;
+            margin-right: 10px;
+            overflow: hidden;
+        }
+
+        p {
+            background-color: $bgSubColor;
+            padding: 0 .5em;
+            line-height: 55px;
+            height: 55px;
+            font-size: 4vw;
+            display: flex;
+            align-items: center;
+
+            img {
+                width: 100%;
+                max-width: 200px;
+            }
+        }
+    }
+
+    #navArea {
+        width: 45vw;
+        display: flex;
+        justify-content: space-between;
+
+        #point {
+            display: flex;
+            margin-left: 5px;
+            justify-content: space-between;
+            width: 60%;
+            position: relative;
+
+            button {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+
+                /* buttonのスタイル削除 */
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                outline: none;
+                padding: 0;
+                appearance: none;
+            }
+
+            .np_img {
+                background-color: $bgSubColor;
+                height: 25px;
+                width: 25px;
+                border-radius: 50%;
+                margin-top: 15px;
+                text-align: center;
+                overflow: hidden;
+
+                img {
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+
+            .np {
+                line-height: 55px;
+                font-size: .8em;
+            }
+
+            .p-none {
+                display: none;
+            }
+
+            .none {
+                display: none;
+            }
+
+            #pointPop {
+                position: absolute;
+                width: 30vw;
+                text-align: center;
+                margin-top: 55px;
+                z-index: 9000;
+                height: 30px;
+                padding: 0 10px;
+                background-color: white;
+                border-radius: 5px;
+                box-shadow: 1px 1px 2px #333;
+
+                p {
+                    font-size: 3vw;
+                    line-height: 30px;
+                }
+            }
+
+            #pointPop:before {
+                content: "";
+                position: absolute;
+                top: -28px;
+                left: 70%;
+                margin-left: -15px;
+                border: 15px solid transparent;
+                border-bottom: 15px solid white;
+            }
+        }
+
+        /*ボタン外側※レイアウトによってpositionや形状は適宜変更してください*/
+        .openbtn {
+            /*ボタン内側の基点となるためrelativeを指定。
+追従するナビゲーションの場合はfixed＋top、rightといった位置をセットで指定*/
+            position: relative;
+            background: $bgSubColor;
+            cursor: pointer;
+            width: 55px;
+            height: 55px;
+            border-radius: 5px;
+            z-index: 9999;
+
+            span {
+                display: inline-block;
+                transition: all .4s;
+                /*アニメーションの設定*/
+                position: absolute;
+                left: 15px;
+                height: 3px;
+                border-radius: 2px;
+                background: black;
+                width: 25px;
+            }
+
+            span:nth-of-type(1) {
+                top: 16px;
+            }
+
+            span:nth-of-type(2) {
+                top: 26px;
+            }
+
+            span:nth-of-type(3) {
+                top: 36px;
+            }
+
+        }
+
+        .openbtn.active span:nth-of-type(1) {
+            top: 20px;
+            left: 15px;
+            transform: translateY(6px) rotate(-45deg);
+            width: 25px;
+        }
+
+        .openbtn.active span:nth-of-type(2) {
+            opacity: 0;
+            /*真ん中の線は透過*/
+        }
+
+        .openbtn.active span:nth-of-type(3) {
+            top: 32px;
+            left: 15px;
+            transform: translateY(-6px) rotate(45deg);
+            width: 25px;
+        }
+
+        #g-nav {
+            /*position:fixed;にし、z-indexの数値を大きくして前面へ*/
+            position: fixed;
+            z-index: 999;
+            /*ナビのスタート位置と形状*/
+            top: 0;
+            right: -120%;
+            width: 100%;
+            height: 100vh;
+            /*ナビの高さ*/
+            background: $bgColor;
+            /*動き*/
+            transition: all 0.6s;
+
+            ul {
+                /*ナビゲーション天地中央揃え*/
+                position: absolute;
+                z-index: 999;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        /*アクティブクラスがついたら位置を0に*/
+        #g-nav.panelactive {
+            right: -50%;
+        }
+
+        /*ナビゲーションの縦スクロール*/
+        #g-nav.panelactive #g-nav-list {
+            /*ナビの数が増えた場合縦スクロール*/
+            position: fixed;
+            z-index: 999;
+            width: 100%;
+            height: 100vh;
+            /*表示する高さ*/
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /*ナビゲーション*/
+        #g-nav ul {
+            /*ナビゲーション天地中央揃え*/
+            position: absolute;
+            z-index: 999;
+            left: 25%;
+            transform: translate(-50%, -50%);
+
+            li {
+                list-style: none;
+                text-align: center;
+
+                input {
+                    color: #333;
+                    background-color: $bgSubColor;
+                    text-decoration: none;
+                    padding: 10px;
+                    display: block;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    font-weight: bold;
+                    margin-bottom: 15px;
+                    width: 150px;
+                }
+            }
+        }
+
+        .list_bg {
+            position: absolute;
+            width: 30%;
+            bottom: 75px;
+            right: 50%;
+
+            img {
+                width: 100%;
+            }
+        }
+    }
+
+}
+
+footer {
+    width: 100vw;
+    height: 75px;
+    background-color: $bgColor;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    position: fixed;
+    bottom: 0;
+    z-index: 999;
+
+    p {
+        position: absolute;
+        width: 100px;
+        bottom: 50px;
+        left: 0;
+
+        img {
+            width: 100%;
+            transform: scale(-1, 1)
+        }
+    }
+
+    ul {
+        width: 100vw;
+        display: flex;
+        justify-content: space-between;
+
+        li {
+            height: 60px;
+            width: 60px;
+            background-color: $bgSubColor;
+            border-radius: 50%;
+
+            input {
+                display: block;
+                height: 100%;
+                width: 100%;
+                border-radius: 50%;
+                overflow: hidden;
+
+                img {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+}
+
+@media screen and (min-width: 1201px) {
+    #pc-none {
+        position: absolute;
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        background-color: #333;
+        z-index: 10000;
+
+        h1 {
+            display: grid;
+            place-content: center;
+            line-height: 100vh;
+            color: #fff;
+            font-size: 2vw;
+        }
+    }
+}

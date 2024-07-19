@@ -1,0 +1,834 @@
+@charset "UTF-8";
+/*! destyle.css v4.0.0 | MIT License | https://github.com/nicolas-cusan/destyle.min.css */
+*, ::before, ::after {
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 0;
+}
+
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  display: block;
+}
+
+p, table, blockquote, address, pre, iframe, form, figure, dl {
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+dt {
+  font-weight: 700;
+}
+
+dd {
+  margin-left: 0;
+}
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+  border-top-width: 1px;
+  margin: 0;
+  clear: both;
+  color: inherit;
+}
+
+pre {
+  font-family: monospace, monospace;
+  font-size: inherit;
+}
+
+address {
+  font-style: inherit;
+}
+
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+
+abbr[title] {
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+}
+
+b, strong {
+  font-weight: bolder;
+}
+
+code, kbd, samp {
+  font-family: monospace, monospace;
+  font-size: inherit;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+svg, img, embed, object, iframe {
+  vertical-align: bottom;
+}
+
+button, input, optgroup, select, textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  vertical-align: middle;
+  color: inherit;
+  font: inherit;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  text-align: inherit;
+  text-transform: inherit;
+}
+
+button, [type=button], [type=reset], [type=submit] {
+  cursor: pointer;
+}
+
+button:disabled, [type=button]:disabled, [type=reset]:disabled, [type=submit]:disabled {
+  cursor: default;
+}
+
+:-moz-focusring {
+  outline: auto;
+}
+
+select:disabled {
+  opacity: inherit;
+}
+
+option {
+  padding: 0;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+progress {
+  vertical-align: baseline;
+}
+
+textarea {
+  overflow: auto;
+}
+
+[type=number]::-webkit-inner-spin-button, [type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+[type=search] {
+  outline-offset: -2px;
+}
+
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit;
+}
+
+[type=number] {
+  -moz-appearance: textfield;
+}
+
+label[for] {
+  cursor: pointer;
+}
+
+details {
+  display: block;
+}
+
+summary {
+  display: list-item;
+}
+
+[contenteditable]:focus {
+  outline: auto;
+}
+
+table {
+  border-color: inherit;
+  border-collapse: collapse;
+}
+
+caption {
+  text-align: left;
+}
+
+td, th {
+  vertical-align: top;
+  padding: 0;
+}
+
+th {
+  text-align: left;
+  font-weight: 700;
+}
+
+@font-face {
+  /* ① ここにfont-familyで指定したい名前を書く*/
+  font-family: "myfont";
+  /* フォントが置かれているパスを書く */
+  src: url("/static/font/azuki.ttf") format("truetype");
+}
+body {
+  font-family: "myfont";
+  font-weight: bold;
+}
+
+main {
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: #fff;
+  padding-top: 75px;
+  padding-bottom: 75px;
+}
+
+#pc-none {
+  display: none;
+}
+
+header {
+  width: 100vw;
+  height: 75px;
+  background-color: rgb(177, 175, 199);
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+}
+header #logoArea {
+  width: 60vw;
+  display: flex;
+}
+header #logoArea input {
+  background-color: #fff;
+  height: 55px;
+  width: 55px;
+  margin-right: 10px;
+  overflow: hidden;
+}
+header #logoArea p {
+  background-color: #fff;
+  padding: 0 0.5em;
+  line-height: 55px;
+  height: 55px;
+  font-size: 4vw;
+  display: flex;
+  align-items: center;
+}
+header #logoArea p img {
+  width: 100%;
+  max-width: 200px;
+}
+header #navArea {
+  width: 45vw;
+  display: flex;
+  justify-content: space-between;
+  /*ボタン外側※レイアウトによってpositionや形状は適宜変更してください*/
+  /*アクティブクラスがついたら位置を0に*/
+  /*ナビゲーションの縦スクロール*/
+  /*ナビゲーション*/
+}
+header #navArea #point {
+  display: flex;
+  margin-left: 5px;
+  justify-content: space-between;
+  width: 60%;
+  position: relative;
+}
+header #navArea #point button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  /* buttonのスタイル削除 */
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+header #navArea #point .np_img {
+  background-color: #fff;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  margin-top: 15px;
+  text-align: center;
+  overflow: hidden;
+}
+header #navArea #point .np_img img {
+  height: 100%;
+  width: 100%;
+}
+header #navArea #point .np {
+  line-height: 55px;
+  font-size: 0.8em;
+}
+header #navArea #point .p-none {
+  display: none;
+}
+header #navArea #point .none {
+  display: none;
+}
+header #navArea #point #pointPop {
+  position: absolute;
+  width: 30vw;
+  text-align: center;
+  margin-top: 55px;
+  z-index: 9000;
+  height: 30px;
+  padding: 0 10px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px #333;
+}
+header #navArea #point #pointPop p {
+  font-size: 3vw;
+  line-height: 30px;
+}
+header #navArea #point #pointPop:before {
+  content: "";
+  position: absolute;
+  top: -28px;
+  left: 70%;
+  margin-left: -15px;
+  border: 15px solid transparent;
+  border-bottom: 15px solid white;
+}
+header #navArea .openbtn {
+  /*ボタン内側の基点となるためrelativeを指定。
+  追従するナビゲーションの場合はfixed＋top、rightといった位置をセットで指定*/
+  position: relative;
+  background: #fff;
+  cursor: pointer;
+  width: 55px;
+  height: 55px;
+  border-radius: 5px;
+  z-index: 9999;
+}
+header #navArea .openbtn span {
+  display: inline-block;
+  transition: all 0.4s;
+  /*アニメーションの設定*/
+  position: absolute;
+  left: 15px;
+  height: 3px;
+  border-radius: 2px;
+  background: black;
+  width: 25px;
+}
+header #navArea .openbtn span:nth-of-type(1) {
+  top: 16px;
+}
+header #navArea .openbtn span:nth-of-type(2) {
+  top: 26px;
+}
+header #navArea .openbtn span:nth-of-type(3) {
+  top: 36px;
+}
+header #navArea .openbtn.active span:nth-of-type(1) {
+  top: 20px;
+  left: 15px;
+  transform: translateY(6px) rotate(-45deg);
+  width: 25px;
+}
+header #navArea .openbtn.active span:nth-of-type(2) {
+  opacity: 0;
+  /*真ん中の線は透過*/
+}
+header #navArea .openbtn.active span:nth-of-type(3) {
+  top: 32px;
+  left: 15px;
+  transform: translateY(-6px) rotate(45deg);
+  width: 25px;
+}
+header #navArea #g-nav {
+  /*position:fixed;にし、z-indexの数値を大きくして前面へ*/
+  position: fixed;
+  z-index: 999;
+  /*ナビのスタート位置と形状*/
+  top: 0;
+  right: -120%;
+  width: 100%;
+  height: 100vh;
+  /*ナビの高さ*/
+  background: rgb(177, 175, 199);
+  /*動き*/
+  transition: all 0.6s;
+}
+header #navArea #g-nav ul {
+  /*ナビゲーション天地中央揃え*/
+  position: absolute;
+  z-index: 999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+header #navArea #g-nav.panelactive {
+  right: -50%;
+}
+header #navArea #g-nav.panelactive #g-nav-list {
+  /*ナビの数が増えた場合縦スクロール*/
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  height: 100vh;
+  /*表示する高さ*/
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+header #navArea #g-nav ul {
+  /*ナビゲーション天地中央揃え*/
+  position: absolute;
+  z-index: 999;
+  left: 25%;
+  transform: translate(-50%, -50%);
+}
+header #navArea #g-nav ul li {
+  list-style: none;
+  text-align: center;
+}
+header #navArea #g-nav ul li input {
+  color: #333;
+  background-color: #fff;
+  text-decoration: none;
+  padding: 10px;
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+  margin-bottom: 15px;
+  width: 150px;
+}
+header #navArea .list_bg {
+  position: absolute;
+  width: 30%;
+  bottom: 75px;
+  right: 50%;
+}
+header #navArea .list_bg img {
+  width: 100%;
+}
+
+footer {
+  width: 100vw;
+  height: 75px;
+  background-color: rgb(177, 175, 199);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  position: fixed;
+  bottom: 0;
+  z-index: 999;
+}
+footer p {
+  position: absolute;
+  width: 100px;
+  bottom: 50px;
+  left: 0;
+}
+footer p img {
+  width: 100%;
+  transform: scale(-1, 1);
+}
+footer ul {
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+}
+footer ul li {
+  height: 60px;
+  width: 60px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+footer ul li input {
+  display: block;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+footer ul li input img {
+  width: 100%;
+}
+
+@media screen and (min-width: 1201px) {
+  #pc-none {
+    position: absolute;
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    background-color: #333;
+    z-index: 10000;
+  }
+  #pc-none h1 {
+    display: grid;
+    place-content: center;
+    line-height: 100vh;
+    color: #fff;
+    font-size: 2vw;
+  }
+}
+main .post {
+  width: 100vw;
+  position: relative;
+}
+main .post .user {
+  position: absolute;
+  display: flex;
+  z-index: 10;
+  padding: 5px;
+}
+main .post .user form {
+  display: flex;
+}
+main .post .user form .user_icon {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 5px black, 0 0 10px whitesmoke;
+}
+main .post .user form .user_icon img {
+  height: 100%;
+  width: 100%;
+}
+main .post .user form .user_id {
+  margin-left: 5px;
+  line-height: 25px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px 1px black, -0.5px -0.5px 1px black, 0 0 4px white;
+}
+main .post .user form button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  /* buttonのスタイル削除 */
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+main .post .imageArea {
+  width: 100vw;
+  overflow: hidden;
+  background-color: #fff;
+}
+main .post .imageArea input,
+main .post .imageArea img {
+  width: 100vw;
+}
+main .post .detailUp {
+  display: flex;
+  background-color: rgb(177, 175, 199);
+  color: white;
+  height: 35px;
+  width: 100vw;
+}
+main .post .detailUp .detailUpLeft {
+  display: flex;
+  width: 20%;
+  height: 100%;
+}
+main .post .detailUp .detailUpLeft li {
+  width: 30px;
+  height: 30px;
+  padding: 2px;
+  margin: 2.5px 2px;
+  overflow: hidden;
+}
+main .post .detailUp .detailUpLeft li a {
+  display: block;
+  height: 100%;
+}
+main .post .detailUp .detailUpLeft li a img {
+  height: 100%;
+}
+main .post .detailUp .detailUpRight {
+  width: 80%;
+  display: flex;
+  justify-content: flex-end;
+}
+main .post .detailUp .detailUpRight p {
+  text-align: right;
+  padding-right: 10px;
+  line-height: 35px;
+}
+main .post .detailUp .detailUpRight input {
+  width: 30px;
+  height: 30px;
+  padding: 2px;
+  margin-right: 10px;
+}
+main .post .cat_tag {
+  height: 35px;
+  overflow-x: scroll;
+}
+main .post .cat_tag p {
+  padding-left: 5px;
+  line-height: 35px;
+}
+main .post .detail_area {
+  width: 100%;
+  border-bottom: 1px solid black;
+}
+main .post .detail_area .detail {
+  width: 95%;
+  height: 75px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  border: 1px solid black;
+  padding: 2px 5px;
+}
+main .post .detail_area .detail .detail_text {
+  width: 100%;
+  height: 100%;
+}
+main .post .detail_area .comment_area {
+  width: 95%;
+  height: 75px;
+  margin: 0 auto;
+  border: 1px solid black;
+  padding: 2px 5px;
+  margin-bottom: 10px;
+  position: relative;
+}
+main .post .detail_area .comment_area .title {
+  position: absolute;
+  height: 20px;
+}
+main .post .detail_area .comment_area .comment {
+  overflow-y: scroll;
+  width: 100%;
+  height: 100%;
+  padding-top: 25px;
+}
+main .post .modal {
+  display: none;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10000;
+}
+main .post .modal__bg {
+  background: rgba(0, 0, 0, 0.8);
+  height: 100vh;
+  position: absolute;
+  width: 100%;
+}
+main .post .modal__content {
+  background: #fff;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 95%;
+  height: 350px;
+  border: 1px solid black;
+}
+main .post .modal__content .title_area {
+  width: 100%;
+  background-color: rgb(177, 175, 199);
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+  padding: 5px 10px;
+}
+main .post .modal__content .title_area p {
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+main .post .modal__content .modal_comment {
+  width: 100%;
+  padding: 0 10px;
+  height: 290px;
+}
+main .post .modal__content form {
+  width: 100%;
+  background-color: rgb(177, 175, 199);
+  display: flex;
+  justify-content: space-around;
+  height: 30px;
+  padding: 5px 10px;
+}
+main .post .modal__content form input:first-child {
+  width: 80%;
+  background-color: #fff;
+  border: 1px solid black;
+}
+main .post .modal__content form input:last-child {
+  width: 15%;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.searchArea {
+  width: 80%;
+  height: 50px;
+  margin: 0 auto;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+}
+.searchArea .searchText {
+  display: block;
+  float: left;
+  box-sizing: border-box;
+  height: 25px;
+  width: 85%;
+  margin: 12.5px 0;
+  padding: 0 5px;
+  border: 2px solid rgb(177, 175, 199);
+  color: #333;
+  outline: 0;
+  font-size: 15px;
+  background: white;
+}
+.searchArea .searchText:focus {
+  background: #cfe7ff;
+}
+.searchArea .searchText::-ms-clear {
+  display: none;
+}
+.searchArea .searchButton {
+  float: left;
+  box-sizing: border-box;
+  height: 25px;
+  margin: 0;
+  width: 15%;
+  margin: 12.5px 0;
+  background: rgb(177, 175, 199);
+  color: #fff;
+  cursor: pointer;
+}
+.searchArea .searchImg {
+  display: inline-block;
+  width: auto;
+  height: 25px;
+  margin: 0 0 0 25%;
+  vertical-align: middle;
+}
+
+#userArea {
+  width: 100vw;
+  overflow-x: scroll;
+  padding: 15px;
+  background-color: rgb(177, 175, 199);
+  display: flex;
+  flex-wrap: nowrap;
+}
+#userArea .err {
+  margin: 0 auto;
+}
+#userArea .user {
+  height: 55px;
+  width: 50px;
+  margin: 0 10px;
+  text-align: center;
+}
+#userArea .user .icon {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+#userArea .user .icon img {
+  height: 100%;
+  width: 100%;
+}
+#userArea .user .id {
+  height: 15px;
+  width: 50px;
+  overflow: hidden;
+  text-align: center;
+  margin: 0 auto;
+}
+
+#postArea {
+  width: 100vw;
+}
+#postArea .err {
+  text-align: center;
+  padding-top: 50%;
+}
+
+.bg {
+  position: absolute;
+  width: 40vw;
+  right: 0;
+  padding-top: 100px;
+  z-index: 0;
+}
+.bg img {
+  width: 100%;
+}/*# sourceMappingURL=searchStyle.css.map */

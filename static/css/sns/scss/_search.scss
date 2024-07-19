@@ -1,0 +1,117 @@
+@use "_variables.scss" as *;
+
+.searchArea {
+    width: 80%;
+    height: 50px;
+    margin: 0 auto;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+
+    .searchText {
+        display: block;
+        float: left;
+        box-sizing: border-box;
+        height: 25px;
+        width: 85%;
+        margin: 12.5px 0;
+        padding: 0 5px;
+        border: 2px solid $bgColor;
+        color: #333;
+        outline: 0;
+        font-size: 15px;
+        background: white;
+    }
+
+    .searchText:focus {
+        background: #cfe7ff;
+    }
+
+    .searchText::-ms-clear {
+        display: none;
+    }
+
+    .searchButton {
+        float: left;
+        box-sizing: border-box;
+        height: 25px;
+        margin: 0;
+        width: 15%;
+        margin: 12.5px 0;
+        background: $bgColor;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .searchImg {
+        display: inline-block;
+        width: auto;
+        height: 25px;
+        margin: 0 0 0 25%;
+        vertical-align: middle;
+    }
+}
+
+#userArea {
+    width: 100vw;
+    overflow-x: scroll;
+    padding: 15px;
+    background-color: $bgColor;
+    display: flex;
+    flex-wrap: nowrap;
+
+    .err {
+        margin: 0 auto;
+    }
+
+    .user {
+        height: 55px;
+        width: 50px;
+        margin: 0 10px;
+        text-align: center;
+
+        .icon {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto;
+
+
+            img {
+                height: 100%;
+                width: 100%;
+
+            }
+        }
+
+        .id {
+            height: 15px;
+            width: 50px;
+            overflow: hidden;
+            text-align: center;
+            margin: 0 auto;
+
+        }
+    }
+}
+
+#postArea {
+    width: 100vw;
+
+    .err {
+        text-align: center;
+        padding-top: 50%;
+    }
+}
+
+.bg {
+    position: absolute;
+    width: 40vw;
+    right: 0;
+    padding-top: 100px;
+    z-index: 0;
+
+    img {
+        width: 100%;
+    }
+}

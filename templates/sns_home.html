@@ -1,0 +1,77 @@
+{% extends 'sns_base.html' %}
+
+{% block title %}home{% endblock %}
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="/static/css/sns/homeStyle.css">
+{% endblock %}
+{% block main %}
+
+<main>
+    {% for rec in result %}
+    <div class="post">
+        <div class="imageArea">
+            <a href="#" class="user">
+                <form action="/post_user_detail/{{rec['id']}}" method="post">
+                    <p class="user_icon"><img src="/static/images/icon/{{rec['profile_image']}}" alt=""></p>
+                    <p class="user_id">{{rec['id']}}</p>
+                    <button type="submit"></button>
+                </form>
+            </a>
+            <form action="/post_detail/{{rec['post_id']}}" method="post">
+                <input type="image" value="投稿" src="/static/images/post/{{rec['image']}}">
+            </form>
+        </div>
+        <div class="detailUp">
+            <ul class="detailUpLeft">
+                <li><a href="#"><img src="/static/images/material/heart.png" alt=""></a></li>
+                <li><a href="#"><img src="/static/images/material/share.png" alt=""></a></li>
+            </ul>
+            <div class="detailUpRight">
+                <p>獲得ポイント<span>{{rec["post_point"]}}</span>NP</p>
+                <form action="/donation/{{rec['post_id']}}/1" method="post">
+                    <input type="image" value="寄付" src="/static/images/material/donation.png">
+                </form>
+            </div>
+        </div>
+        <div class="cat_tag">
+            <p>{{rec["tag_name"]}}</p>
+        </div>
+        <div class="detail_area">
+            <div class="detail">
+                <p class="detail_text">{{ rec["detail"] }}</p>
+            </div>
+            <div class="comment_area">
+                <a class="js-modal-open" href="" data-target="{{rec['post_id']}}">
+                    <p class="title">コメント</p>
+                    <p class="comment">{{ rec["comment"] }}</p>
+                </a>
+            </div>
+        </div>
+        <div id="{{rec['post_id']}}" class="modal js-modal">
+            <div class="modal__bg js-modal-close"></div>
+            <div class="modal__content">
+                <div class="title_area">
+                    <p>コメント</p>
+                    <a class="js-modal-close" href="">閉じる</a>
+                </div>
+                <div class="modal_comment">
+                    <ul>
+                        <li></li>
+                    </ul>
+                </div>
+                <form action="/comment/{{rec['post_id']}}" method="post">
+                    <input type="text" name="commentText">
+                    <input type="submit" value="追加">
+                </form>
+
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</main>
+
+{% endblock %}
+{% block js %}
+{{ super() }}
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'sns_base.html' %}
+
+{% block title %}signup{% endblock %}
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="/static/css/sns/completeStyle.css">
+{% endblock %}
+{% block main %}
+
+<main>
+    <div class="signupMail">
+        <h1>新規登録</h1>
+        <h2>{{to_email}}に<br>確認メールを送りました</h2>
+        <p>登録はまだ完了していません</p>
+    </div>
+</main>
+
+{% endblock %}
+{% block js %}
+{{ super() }}
+<script src="/static/js/menu.js"></script>
+{% endblock %}

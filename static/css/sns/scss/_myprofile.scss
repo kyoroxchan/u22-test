@@ -1,0 +1,148 @@
+@use "_variables.scss" as *;
+
+#user {
+    height: 150px;
+    width: 100vw;
+    background-color: white;
+
+    #user-top {
+        height: 75px;
+        display: flex;
+        overflow: hidden;
+        background-color: $bgSubColor;
+
+        #icon {
+            width: 60px;
+            height: 60px;
+            margin: 10px 10px 0 10px;
+
+            p {
+                height: 100%;
+                width: 100%;
+                border-radius: 50%;
+                margin-bottom: 7vh;
+                margin-left: auto;
+                margin-right: auto;
+                background-color: black;
+                overflow: hidden;
+
+                img {
+                    width: 100%;
+                }
+            }
+        }
+
+        #data {
+            width: 80%;
+            height: 100%;
+            display: flex;
+            margin-top: 25px;
+
+            div {
+                width: 55%;
+
+                h2 {
+                    font-size: 1.5em;
+                    line-height: 25px;
+                }
+
+                h3 {
+                    font-size: 1.2em;
+                    line-height: 15px;
+                }
+            }
+
+            p {
+                height: 40px;
+                text-align: center;
+
+                span {
+                    display: block;
+                    font-size: 1.5em;
+                }
+            }
+        }
+
+    }
+
+    #user-bottom {
+        height: 75px;
+        background-color: $bgSubColor;
+
+        #detail {
+            height: 50px;
+            background-color: $bgSubColor;
+            padding: 10px;
+        }
+
+        #followArea {
+            display: flex;
+
+            li {
+                width: 33%;
+                margin: 0 10px;
+                font-size: 1em;
+                text-align: center;
+            }
+        }
+    }
+}
+
+
+.tag_Area {
+    height: 50px;
+    width: 100vw;
+    padding: 5px;
+    background-color: $labelColor;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+
+    .tag {
+        display: inline-block;
+        height: 40px;
+        width: auto;
+        line-height: 40px;
+        background-color: rgb(213, 213, 213);
+        margin-left: 10px;
+        padding: 0 10px;
+        border-radius: 30px;
+        text-align: center;
+    }
+
+    .tag.is-active {
+        background: $bgColor;
+        font-weight: 500;
+        color: #fff;
+        text-shadow: 0 0 2px black;
+        box-shadow: inset 0 0 2vh white;
+    }
+}
+
+#postArea {
+
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+
+    .post {
+        height: 32vw;
+        width: 32vw;
+        background-color: white;
+        margin: .66vw;
+        overflow: hidden;
+        position: relative;
+        border: 1px solid gray;
+        box-shadow: 1px 1px 3px black;
+
+        input {
+            width: 100%;
+            margin: auto 0;
+            position: absolute;
+            top: 50%;
+            transform: translate(0, -50%);
+        }
+    }
+}
